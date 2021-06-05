@@ -66,10 +66,8 @@
 }
 
 .hero {
-  overflow-x: clip;
   position: relative;
   background-color: #fafafa;
-  z-index: 100;
 }
 
 .hero__modal {
@@ -114,13 +112,18 @@
   background-position: center center;
 }
 
-.hero__bg__img {
+.hero__bg::after {
+  content: '';
+  background-image: url("../../.././images/image-mockups.png");
   position: absolute;
   display: block;
   width: clamp(0px, 90vw, 750px);
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 97%;
   left: 50%;
   transform: translateX(-50%);
-  top: -120px;
 }
 
 .hero__text {
@@ -128,7 +131,7 @@
   max-width: 310px;
   padding-top: 50px;
   text-align: center;
-  margin: 0 auto 0 clamp(20px, 9vw, 165px);
+  margin: 0 auto;
 }
 
 .hero__text__h1 {
@@ -279,6 +282,11 @@
   margin-top: 10px;
   font-weight: 400;
   letter-spacing: -1px;
+  cursor: pointer;
+}
+
+.articles__box .article__text__title:hover {
+  color: #31d35c;
 }
 
 .articles__box .article__text__p {
@@ -312,6 +320,11 @@
 
 .footer__logowrap__social img {
   width: 25px;
+  cursor: pointer;
+}
+
+.footer__logowrap__social img:hover {
+  filter: invert(28%) sepia(21%) saturate(1576%) hue-rotate(80deg) brightness(93%) contrast(86%);
 }
 
 .footer__links {
@@ -324,31 +337,53 @@
 .footer__links li {
   margin-top: 25px;
   font-weight: 300;
+  cursor: pointer;
+}
+
+.footer__links li:hover {
+  color: #31d35c;
 }
 
 .footer__copywrap button {
+  position: relative;
+  display: block;
+  margin: 25px auto 0;
   width: 165px;
   height: 45px;
   font-size: 16px;
   font-weight: 400;
-  margin-top: 25px;
   background: linear-gradient(to right, #31d35c, #2bb7da);
   color: white;
   border-radius: 25px;
   border: none;
   cursor: pointer;
-  margin: 0 auto;
-  display: block;
 }
 
-.footer__copywrap button:hover {
-  background: linear-gradient(to right, rgba(49, 211, 92, 0.5), rgba(43, 183, 218, 0.5));
+.footer__copywrap button:hover::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  background-color: white;
+  opacity: 0.4;
+  left: 0;
+  top: 0;
 }
 
 .footer__copywrap p {
   color: #9698a6;
   font-size: 16px;
   margin-top: 30px;
+}
+
+@media screen and (min-width: 500px) {
+  .hero__bg::after {
+    width: 100%;
+    height: 120%;
+    background-size: 90%;
+    background-position: center 95%;
+  }
 }
 
 @media screen and (min-width: 660px) {
@@ -395,41 +430,11 @@
     height: 100px;
   }
   .footer__copywrap button {
-    margin-right: 0;
+    margin: 0 0 0 auto;
   }
 }
 
 @media screen and (min-width: 970px) {
-  .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    justify-content: center;
-    height: 660px;
-  }
-  .hero__text {
-    text-align: left;
-    width: 450px;
-  }
-  .hero__text__h1 {
-    font-size: 41px;
-  }
-  .hero__text__p {
-    font-size: 12px;
-  }
-  .hero__bg {
-    background-image: url("../../.././images/bg-intro-desktop.svg");
-    background-size: 200%;
-    background-position: 11% 57%;
-    width: 100%;
-    height: 100%;
-    order: 2;
-  }
-  .hero__bg__img {
-    left: 65%;
-    transform: translateX(-50%);
-    top: -120px;
-  }
   .main {
     text-align: left;
   }
@@ -455,6 +460,46 @@
   .articles__box .article {
     width: 260px;
     height: 400px;
+  }
+}
+
+@media screen and (min-width: 1050px) {
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    height: 660px;
+  }
+  .hero__text {
+    text-align: left;
+    width: 450px;
+    margin: 0 auto 0 clamp(20px, 9vw, 165px);
+  }
+  .hero__text__h1 {
+    font-size: 41px;
+  }
+  .hero__text__p {
+    font-size: 12px;
+  }
+  .hero__bg {
+    background-image: url("../../.././images/bg-intro-desktop.svg");
+    background-size: 200%;
+    background-position: 11% 57%;
+    width: 100%;
+    height: 100%;
+    order: 2;
+  }
+  .hero__bg::after {
+    height: 125%;
+    background-size: 105%;
+    background-position: -268% 25%;
+  }
+}
+
+@media screen and (min-width: 1220px) {
+  .hero__bg::after {
+    background-position: -268% 98%;
   }
 }
 
